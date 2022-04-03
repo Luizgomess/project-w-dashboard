@@ -1,0 +1,14 @@
+<section class="progress-bar-component">
+    <div class="progress-bar-component__wrapper">
+        <div class="progress-bar-component__wrapper__bar" [ngClass]="{
+            'created': progressBarState === 'created',
+            'processing': progressBarState === 'processing',
+            'processed': progressBarState === 'processed'
+        }"></div>
+    </div>
+    <footer class="progress-bar-component__field-label">
+        <p>Solicitada</p>
+        <p>Processando</p>
+        <p>Concluída</p>
+    </footer>
+</section>

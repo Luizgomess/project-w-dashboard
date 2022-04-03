@@ -1,0 +1,34 @@
+.description-component {
+    &__title {
+        font-size: 2rem;
+        margin-bottom: 40px;
+        font-weight: 500;
+    }
+
+    &__amount-container {
+        width: 550px;
+        margin-bottom: 28px;
+        font-size: 1.4rem;
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+
+        &::before {
+            content: "";
+            top: -26px;
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background-color: #5e5e5e5c;
+        }
+
+        strong {
+            font-weight: bold;
+            color: #00bf3b;
+        }
+
+        @media(max-width: 720px) {
+            width: 70vw;
+        }
+    }
+}

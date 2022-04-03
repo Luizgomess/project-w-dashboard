@@ -1,0 +1,16 @@
+<section class="transactions-table">
+    <header class="transactions-table__header">
+        <h1 class="title">Título</h1>
+        <h1 class="description">Descrição</h1>
+        <h1 class="status">Status</h1>
+        <h1 class="amount">Valor</h1>
+        <span class="transactions-table__header__mobile-title">Listagem</span>
+        <span class="transactions-table__header__transaction-counter">itens {{ transactions.length }}</span>
+    </header>
+    <main class="transactions-table__main">
+        <app-transaction-item *ngFor="let transaction of transactions |
+        filter: filterTitle : filterStatus;" [transaction]="transaction"
+            (click)="handleOpenTransactionModal(transaction)"></app-transaction-item>
+    </main>
+</section>
+<app-transaction-modal [modalProperties]="teste"></app-transaction-modal>

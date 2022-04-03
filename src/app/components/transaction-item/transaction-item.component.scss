@@ -1,0 +1,56 @@
+.card-component {
+    max-width: 1220px;
+    background-color: #c4c4c4;
+    margin: 20px 0;
+    padding: 16px 20px;
+    border-radius: 18px;
+    transition: transform .1s;
+    
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas:
+    "title description description status amount"	
+    ;
+
+    span {
+        justify-self: center;
+        font-size: 1.3rem;
+    }
+
+    &__title {
+        font-weight: 500;
+        grid-area: title;
+        @media(max-width: 720px) {
+            font-size: 1.5rem;
+            justify-self: start;
+        }
+    }
+
+    &__description {
+        grid-area: description;
+    }
+
+    &__status {
+        grid-area: status;
+    }
+
+    &__amount {
+        grid-area: amount;
+    }
+
+    &:hover {
+        transform: translateY(-10px);
+        background-color: #3d3d3d;
+        color: tomato;
+    }
+
+    @media(max-width: 720px) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        height: 150px;
+        grid-template-areas:
+        "title title"
+        "description description"	
+        "amount status";
+    }
+}

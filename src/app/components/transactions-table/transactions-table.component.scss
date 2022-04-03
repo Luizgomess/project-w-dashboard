@@ -1,0 +1,77 @@
+.transactions-table {
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 0 20px;
+
+    &__header {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-areas: "title description description status amount";
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 40px;
+        padding: 0 20px;
+
+        h1 {
+            justify-self: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1f1f1f;
+
+            &.title {
+                grid-area: title;
+            }
+            &.description {
+                grid-area: description;
+            }
+            &.status {
+                grid-area: status;
+            }
+            &.amount {
+                grid-area: amount;
+            }
+
+            @media(max-width: 720px) {
+                display: none;
+            }
+        }
+
+        &__mobile-title {
+            display: none;
+            justify-self: start;
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+
+        &__transaction-counter {
+            display: none;
+            justify-self: end;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #808080;
+        }
+
+        &__mobile-title, &__transaction-counter {
+            @media(max-width: 720px) {
+                display: block;
+                align-self: center;
+            }
+        }
+
+        @media(max-width: 720px) {
+            padding: unset;
+            margin: unset;
+            margin-bottom: 20px;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        app-transaction-item {
+            width: 100%;
+        }
+    }
+
+    &__main {
+        min-height: 100vh;
+    }
+}

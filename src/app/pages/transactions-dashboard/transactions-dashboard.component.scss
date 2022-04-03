@@ -1,0 +1,82 @@
+.form-filter {
+    max-width: 1220px;
+    margin: 0 auto 50px;
+    padding: 0 20px;
+
+        &__fieldset {
+            display: flex;
+            justify-content: space-between;
+            border: none;
+
+            @media(max-width: 720px) {
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            &__title {
+                font-size: 2.5rem;
+                margin-bottom: 20px;
+                font-weight: 500;
+                color: #1f1f1f;
+            }
+
+            .form-filter__field {
+
+                &__label {
+                    position: absolute;
+                    left: -999em;
+                    width: 1em;
+                    overflow: hidden;
+                }
+                &.form-filter__field--mask {
+                    width: 23rem;
+                    background: #f4f4f6;
+                    position: relative;
+                    border-radius: 12px;
+
+                    img {
+                        position: absolute;
+                        top: 5px;
+                        left: 15px;
+                        width: 30px;
+                    }
+
+                    @media(max-width: 720px) {
+                        width: 100%;
+                        margin-bottom: 20px;
+                    }
+                }
+
+                &__input {
+                    width: 20rem;
+                    height: 36px;
+                    margin-top: 2px;
+                    margin-left: 46px;
+                    background-color: #f4f4f6;
+                    border-radius: 0 12px 12px 0px;
+                    border: none;
+                    font-size: 1rem;
+                    padding-left: 10px;
+    
+                    @media(max-width: 720px) {
+                        width: 84%;
+                    }
+                }
+        
+                &__select {
+                    width: 18rem;
+                    height: 40px;
+                    padding-left: 11px;
+                    font-size: 1.2rem;
+
+                    border: none;
+                    background: #f4f4f6;
+                    border-radius: 12px;
+    
+                    @media(max-width: 720px) {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }

@@ -1,0 +1,37 @@
+<form *ngIf="transactions" class="form-filter">
+    <fieldset id="filter-arguments" class="form-filter__fieldset">
+        <legend class="form-filter__fieldset__title">Filtros</legend>
+        <p class="form-filter__field form-filter__field--mask">
+            <label for="transaction" class="form-filter__field__label">
+                titulo
+            </label>
+            <img src="../../../assets/search.png" alt="icone de lupa">
+            <input 
+                type="text"
+                [(ngModel)]="filterTitle"
+                name="transaction"
+                id="transaction"
+                placeholder="Pesquise pelo o título"
+                class="form-filter__field__input"
+            >
+        </p>
+        <p class="form-filter__field">
+            <label for="select-status" class="form-filter__field__label">status</label>
+            <select 
+                name="select-status"
+                id="select-status"
+                [(ngModel)]="filterStatus"
+                class="form-filter__field__select"
+            >
+                <option value="" selected>
+                    Select your option
+                </option>
+                <option *ngFor="let option of filterStatusOptions" [value]="option.status">
+                    {{ option.status }}
+                </option>
+            </select>
+        </p>
+    </fieldset>
+</form>
+<app-transactions-table *ngIf="transactions" [transactions]="transactions" [filterTitle]="filterTitle"
+    [filterStatus]="filterStatus"></app-transactions-table>
