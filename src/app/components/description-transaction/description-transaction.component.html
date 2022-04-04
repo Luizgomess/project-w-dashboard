@@ -1,7 +1,7 @@
 <article class="description-component">
-    <h1 class="description-component__title">{{ transactionInfo.transactionType === 'from' ? 'Transferindo de': 'Para' }}</h1>
+    <h1 class="description-component__title">{{ descriptionProperties.transactionType === 'from' ? 'Transferindo de': 'Para' }}</h1>
     <section class="description-component__amount-container">
-        <strong>{{ transactionInfo.from }}</strong>
-        <p>{{ transactionInfo.amount | currency }}</p>
+        <strong>{{ descriptionProperties.commercialEntity }}</strong>
+        <p>{{ descriptionProperties.amount | currency: 'BRL' }}</p>
     </section>
 </article>

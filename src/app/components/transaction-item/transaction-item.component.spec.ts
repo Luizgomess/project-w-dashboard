@@ -39,10 +39,10 @@ describe('TransactionItemComponent', () => {
         to: "Conta Warren"
     };
     fixture.detectChanges();
-    expect(de.query(By.css('#card-component')).nativeElement.textContent).toBeTruthy();
+    expect(de.query(By.css('.card-component')).nativeElement.textContent).toBeTruthy();
     expect(de.query(By.css('.card-component__title')).nativeElement.textContent).toBe('Resgate');
     expect(de.query(By.css('.card-component__description')).nativeElement.textContent).toBe('et labore proident aute nulla');
     expect(de.query(By.css('.card-component__status')).nativeElement.textContent).toBe('created');
-    expect(de.query(By.css('.card-component__amount')).nativeElement.textContent).toBe('$2,078.66');
+    expect(de.query(By.css('.card-component__amount')).nativeElement.textContent).toBe('R$2,078.66');
   });
 });

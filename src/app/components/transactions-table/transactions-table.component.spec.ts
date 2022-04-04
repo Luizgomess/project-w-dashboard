@@ -1,14 +1,12 @@
-import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TransactionsTableComponent } from './transactions-table.component';
-import { FilterPipe } from '../../pipes/filter.pipe'
-import { DebugElement } from '@angular/core';
+import { FilterPipe } from '../../shared/pipes/filter/filter.pipe'
 import { By } from '@angular/platform-browser';
-import { Transaction } from 'src/app/models/Transaction';
+import { Transaction } from 'src/app/shared/models/Transaction';
 
 describe('TransactionsTableComponent', () => {
   let component: TransactionsTableComponent;
   let fixture: ComponentFixture<TransactionsTableComponent>;
-  let de: DebugElement;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -20,7 +18,6 @@ describe('TransactionsTableComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TransactionsTableComponent);
     component = fixture.componentInstance;
-    de = fixture.debugElement;
     fixture.detectChanges();
   });
 
@@ -28,19 +25,19 @@ describe('TransactionsTableComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('verifica se chama a funcao do modal', () => {
-    const apy = spyOn(component, 'handleOpenTransactionModal').and.callThrough();
+  it('should call handleOpenTransactionModal onClick in table iten', () => {
+    const spy = spyOn(component, 'handleOpenTransactionModal').and.callThrough();
+    const { debugElement } = fixture;
 
     fixture.detectChanges();
-    const element = de.query(By.css('app-transaction-item')).nativeElement;
+    const element = debugElement.query(By.css('app-transaction-item')).nativeElement;
     element.click();
 
-    expect(apy).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalled();
   });
 
-  it('verifica se chama a funcao do modal', () => {
-
-    const apy = spyOn(component, 'handleOpenTransactionModal').and.callThrough();
+  it('should call handleOpenTransactionModal with a Transaction', () => {
+    const spy = spyOn(component, 'handleOpenTransactionModal').and.callThrough();
 
     const mockItem: Transaction =
     {
@@ -56,7 +53,7 @@ describe('TransactionsTableComponent', () => {
 
     component.handleOpenTransactionModal(mockItem);
 
-    expect(apy).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalledWith(mockItem);
   });
 
 });

@@ -1,20 +1,21 @@
 <ng-container *ngIf="modalProperties.isOpen">
-    <section  class="modal-component">
+    <section  class="modal-component" tabindex="0">
         <article class="modal-component__wrapper">
             <button 
             class="modal-component__wrapper__close-button" 
             id="close" 
             type="button" 
-            (click)="closeModal()"
+            (click)="handleCloseModal()"
+            (keydown.esc)="handleCloseModal()"
             title="fechar modal"
             >
                 &#x2715;
             </button>
 
             <h1 class="modal-component__wrapper__title">{{ modalProperties.title }}</h1>
-            <app-progress-bar [progressBarState]="modalProperties.status"></app-progress-bar>
-            <app-description-transaction [transactionInfo]="fromData(modalProperties)"></app-description-transaction>
-            <app-description-transaction [transactionInfo]="toData(modalProperties)"></app-description-transaction>
+            <app-progress-bar [progressBarPropertie]="modalProperties.status"></app-progress-bar>
+            <app-description-transaction [descriptionProperties]="setDescriptionData(modalProperties, 'from')"></app-description-transaction>
+            <app-description-transaction [descriptionProperties]="setDescriptionData(modalProperties, 'to')"></app-description-transaction>
         </article>
     </section>
 </ng-container>

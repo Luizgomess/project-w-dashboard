@@ -1,13 +1,15 @@
+@import '../../../assets/styles/colors';
+@import '../../../assets/styles/mixins';
+
 .footer {
     position: static;
     left: 0;
     bottom: 0;
-    background-color: #C4C4C4;
+    background-color: $grey;
     padding: 1rem;
-    margin-top: 60px;
-    
+    margin-top: 60px;    
     &__wrapper {
-        max-width: 1220px;
+        @include maxContainerWidth;
         margin: 0 auto;
         &__text {
             text-align: end;

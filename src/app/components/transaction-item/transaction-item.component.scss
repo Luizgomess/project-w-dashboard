@@ -1,6 +1,9 @@
+@import '../../../assets/styles/colors';
+@import '../../../assets/styles/mixins';
+
 .card-component {
-    max-width: 1220px;
-    background-color: #c4c4c4;
+    @include maxContainerWidth;
+    background-color: $grey;
     margin: 20px 0;
     padding: 16px 20px;
     border-radius: 18px;
@@ -11,10 +14,13 @@
     grid-template-areas:
     "title description description status amount"	
     ;
+    align-items: center;
 
     span {
         justify-self: center;
         font-size: 1.3rem;
+        min-width: 182px;
+        text-align: center;
     }
 
     &__title {
@@ -40,8 +46,8 @@
 
     &:hover {
         transform: translateY(-10px);
-        background-color: #3d3d3d;
-        color: tomato;
+        background-color: $black-300;
+        color: $orange;
     }
 
     @media(max-width: 720px) {
@@ -52,5 +58,10 @@
         "title title"
         "description description"	
         "amount status";
+
+        span {
+            min-width: unset;
+        }
+
     }
 }

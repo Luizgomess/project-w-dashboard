@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Transaction } from 'src/app/models/Transaction';
-import { TransactionsService } from 'src/app/services/transactions.service';
+import { Transaction } from 'src/app/shared/models/Transaction';
+import { TransactionsService } from 'src/app/shared/services/transactions/transactions.service';
 
 @Component({
   selector: 'app-transactions-dashboard',
@@ -32,18 +32,11 @@ export class TransactionsDashboardComponent implements OnInit, OnDestroy {
   getTransactions() {
     this.transactionsService.getTransactions().subscribe({
       next: transactions => this.transactions = this.orderTransactionsByDate(transactions),
-      error: err  => {}
+      error: err  => {
+        console.error(err);
+      }
     })
   }
-
-  // setFilterOptions(transactions: Transaction[]) {
-  //   const allTransactios = new Set();
-  //   this.filterStatusOptions = transactions.filter(transaction => {
-  //     const duplicateData = allTransactios.has(transaction.status);
-  //     allTransactios.add(transaction.status)
-  //     return !duplicateData;
-  //   })
-  // }
 
   orderTransactionsByDate(transactions: Transaction[]): Transaction[] {
     const convertedStringToDate = transactions.map((obj) => {

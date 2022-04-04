@@ -1,18 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { TransactionsDashboardComponent } from './transactions-dashboard.component';
-import { TransactionsService } from 'src/app/services/transactions.service';
-import {
-  HttpClientTestingModule
-} from '@angular/common/http/testing';
+import { TransactionsService } from 'src/app/shared/services/transactions/transactions.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HttpClientModule } from '@angular/common/http';
-import { Transaction } from 'src/app/models/Transaction';
-import { Subscription } from 'rxjs';
+import { Transaction } from 'src/app/shared/models/Transaction';
+import { By } from '@angular/platform-browser';
 
-fdescribe('TransactionsDashboardComponent', () => {
+describe('TransactionsDashboardComponent', () => {
   let component: TransactionsDashboardComponent;
   let fixture: ComponentFixture<TransactionsDashboardComponent>;
-  let service: TransactionsService;
 
   const mockItem: Transaction[] = [
     {
@@ -59,7 +55,6 @@ fdescribe('TransactionsDashboardComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TransactionsDashboardComponent);
     component = fixture.componentInstance;
-    service = TestBed.inject(TransactionsService);
     fixture.detectChanges();
   });
 
@@ -67,7 +62,7 @@ fdescribe('TransactionsDashboardComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('se chama a api de listagem', () => {
+  it('should call transaction service and get data', () => {
     const mySpy = spyOn(component, 'getTransactions').and.callThrough();
 
     component.ngOnInit();
@@ -75,7 +70,7 @@ fdescribe('TransactionsDashboardComponent', () => {
     expect(mySpy).toHaveBeenCalledTimes(1);
   });
 
-  fit('teste chamada do order by date', () => {
+  it('should call the function to order transactions by date', () => {
     const mockReturn: Transaction[] = [
       {
         id: "5f89f9f257fe42957bf6dbfd",
@@ -110,5 +105,19 @@ fdescribe('TransactionsDashboardComponent', () => {
     ];
 
     expect(component.orderTransactionsByDate(mockItem)).toEqual(mockReturn);
+  });
+
+  it('should renders app-transactions-table', () => {
+    const { debugElement } = fixture;
+    const counter = debugElement.query(By.css('app-transactions-table'));
+    expect(counter).toBeTruthy();
+  });
+
+  it('should call ngOnDestroy', () => {
+    const mySpy = spyOn(component, 'ngOnDestroy').and.callThrough();
+
+    component.ngOnDestroy();
+
+    expect(mySpy).toHaveBeenCalled();
   });
 });

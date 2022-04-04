@@ -10,7 +10,7 @@ import { TransactionModalComponent } from './components/transaction-modal/transa
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TransactionsDashboardComponent } from './pages/transactions-dashboard/transactions-dashboard.component';
-import { FilterPipe } from './pipes/filter.pipe';
+import { FilterPipe } from './shared/pipes/filter/filter.pipe';
 import { DescriptionTransactionComponent } from './components/description-transaction/description-transaction.component';
 import { TransactionItemComponent } from './components/transaction-item/transaction-item.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';

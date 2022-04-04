@@ -1,10 +1,12 @@
+@import '../../../assets/styles/colors';
+
 .progress-bar-component {
     width: 550px;
     margin: 0 auto;
 
     &__wrapper {
         width: 100%;
-        background-color: #C4C4C4;
+        background-color: $grey;
         height: 40px;
         padding: 7px;
         margin-bottom: 20px;
@@ -12,7 +14,7 @@
 
         &__bar {
             height: 100%;
-            background-color: #ffff;
+            background-color: $white;
             border-radius: 8px;
 
             &.created {

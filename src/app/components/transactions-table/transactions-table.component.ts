@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Transaction } from 'src/app/models/Transaction';
+import { Transaction } from 'src/app/shared/models/Transaction';
+import { TransactionModalProperties } from 'src/app/shared/models/TransactionModalProperties';
 
 @Component({
   selector: 'app-transactions-table',
@@ -8,19 +9,8 @@ import { Transaction } from 'src/app/models/Transaction';
 })
 export class TransactionsTableComponent {
 
-  teste: any = {
-    id: "",
-    title: "",
-    description: "",
-    status: "",
-    amount: 0,
-    date: "",
-    from: "",
-    to: "",
-    isOpen: false
-  };
-  @Input() filterStatus: string = '';
-  @Input() filterTitle: string = '';
+  @Input() filterByStatus: string = '';
+  @Input() filterBYTitle: string = '';
   @Input() transactions: Transaction[] = [
     {
       id: "",
@@ -34,8 +24,20 @@ export class TransactionsTableComponent {
     }
   ];
 
+  modalProperties: TransactionModalProperties = {
+    id: "",
+    title: "",
+    description: "",
+    status: "",
+    amount: 0,
+    date: "",
+    from: "",
+    to: "",
+    isOpen: false
+  };
+
   handleOpenTransactionModal(transaction: Transaction): void {
-    this.teste = Object.assign(transaction, {isOpen: true})
+    this.modalProperties = Object.assign(transaction, {isOpen: true})
   }
 
 }

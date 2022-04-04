@@ -9,8 +9,10 @@
     </header>
     <main class="transactions-table__main">
         <app-transaction-item *ngFor="let transaction of transactions |
-        filter: filterTitle : filterStatus;" [transaction]="transaction"
-            (click)="handleOpenTransactionModal(transaction)"></app-transaction-item>
+        filter: filterBYTitle : filterByStatus;" [transaction]="transaction"
+            (click)="handleOpenTransactionModal(transaction)"
+            (keydown.enter)="handleOpenTransactionModal(transaction)"
+            ></app-transaction-item>
     </main>
 </section>
-<app-transaction-modal [modalProperties]="teste"></app-transaction-modal>
+<app-transaction-modal [modalProperties]="modalProperties"></app-transaction-modal>

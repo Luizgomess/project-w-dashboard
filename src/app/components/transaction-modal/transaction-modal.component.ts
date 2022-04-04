@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { Transaction } from 'src/app/models/Transaction';
-import { TransactionPeers } from 'src/app/models/TransactionPeers';
+import { Transaction } from 'src/app/shared/models/Transaction';
+import { DescriptionProperties } from 'src/app/shared/models/DescriptionProperties';
+import { TransactionModalProperties } from 'src/app/shared/models/TransactionModalProperties';
 
 @Component({
   selector: 'app-transaction-modal',
@@ -9,11 +10,11 @@ import { TransactionPeers } from 'src/app/models/TransactionPeers';
 })
 export class TransactionModalComponent {
 
-  @Input() modalProperties: any = {
+  @Input() modalProperties: TransactionModalProperties = {
     id: "",
     title: "",
     description: "",
-    status: "",
+    status: "created",
     amount: 0,
     date: "",
     from: "",
@@ -21,22 +22,14 @@ export class TransactionModalComponent {
     isOpen: false
   };
 
-  closeModal(): void {
+  handleCloseModal(): void {
     this.modalProperties.isOpen = false;
   }
 
-  fromData(transaction: Transaction): TransactionPeers {
+  setDescriptionData(transaction: Transaction, transactionType: string): DescriptionProperties {
     return {
-      transactionType: 'from',
-      from: transaction.from,
-      amount: transaction.amount
-    };
-  }
-
-  toData(transaction: Transaction): TransactionPeers {
-    return {
-      transactionType: 'to',
-      from: transaction.to,
+      transactionType: transactionType === 'from' ? 'from' : 'to',
+      commercialEntity: transactionType === 'from' ? transaction.from : transaction.to,
       amount: transaction.amount
     };
   }

@@ -1,3 +1,5 @@
+@import '../../../assets/styles/colors';
+
 .description-component {
     &__title {
         font-size: 2rem;
@@ -19,12 +21,12 @@
             position: absolute;
             width: 100%;
             height: 3px;
-            background-color: #5e5e5e5c;
+            background-color: rgba($grey, 1.8);
         }
 
         strong {
             font-weight: bold;
-            color: #00bf3b;
+            color: $black-300;
         }
 
         @media(max-width: 720px) {

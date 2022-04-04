@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Transaction } from '../models/Transaction';
+import { Transaction } from '../../models/Transaction';
 
 @Pipe({
   name: 'filter'

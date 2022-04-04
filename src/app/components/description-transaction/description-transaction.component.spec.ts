@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TransactionsDashboardComponent } from 'src/app/pages/transactions-dashboard/transactions-dashboard.component';
 import { DescriptionTransactionComponent } from './description-transaction.component';
 
 describe('DescriptionTransactionComponent', () => {
@@ -8,7 +8,7 @@ describe('DescriptionTransactionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DescriptionTransactionComponent ]
+      declarations: [ DescriptionTransactionComponent, TransactionsDashboardComponent ]
     })
     .compileComponents();
   });

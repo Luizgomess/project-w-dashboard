@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { TransactionPeers } from 'src/app/models/TransactionPeers';
+import { DescriptionProperties } from 'src/app/shared/models/DescriptionProperties';
 
 @Component({
   selector: 'app-description-transaction',
@@ -9,9 +9,9 @@ import { TransactionPeers } from 'src/app/models/TransactionPeers';
 export class DescriptionTransactionComponent {
 
   @Input()
-  transactionInfo: TransactionPeers = {
+  descriptionProperties: DescriptionProperties = {
     transactionType: 'from',
-    from: '',
+    commercialEntity: '',
     amount: 0,
   };
 

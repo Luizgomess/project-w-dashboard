@@ -40,15 +40,19 @@ describe('FilterPipe', () => {
     expect(pipe).toBeTruthy();
   });
 
-  it('filtrar por titulo', () => {
+  it('should filter by title', () => {
     expect(pipe.transform(mockItem, 'resgate', '')).toEqual([mockItem[0]]);
   });
 
-  it('filtrar por status', () => {
+  it('should filter by status', () => {
     expect(pipe.transform(mockItem, '', 'processed')).toEqual([mockItem[2]]);
   });
 
-  it('se os valores do filtro forem zero', () => {
+  it('should filter by status and title', () => {
+    expect(pipe.transform(mockItem, 'resgate', 'created')).toEqual([mockItem[0]]);
+  });
+
+  it('should return all data if filters value is not defined', () => {
     expect(pipe.transform(mockItem, '', '')).toEqual(mockItem);
   });
 
